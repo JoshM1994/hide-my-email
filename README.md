@@ -17,3 +17,7 @@ The inspiration for this project was Apple's ["Hide My Email"](https://support.a
 1. Run `npm install`
 2. `npx ts-node scripts/setup.ts` to update the config to use your email and domain and update the list of email prefixes if you wish
 3. `cdk deploy`
+
+## Detailed Instructions
+
+A full list of requirements and setup instructions can be found [in this Medium article](https://medium.com/@joshmustill/self-hosted-hide-my-email-service-on-aws-with-cdk-88efa49ae7f7)
