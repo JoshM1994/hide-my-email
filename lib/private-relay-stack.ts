@@ -11,9 +11,10 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import * as event from 'aws-cdk-lib/aws-lambda-event-sources';
 import { BlockPublicAccess, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import config from './config';
 
-const FWD_TO_EMAIL = 'your-personal@email.com';
-const EMAIL_DOMAIN = 'your-domain.xyz';
+const FWD_TO_EMAIL = config.email;
+const EMAIL_DOMAIN = config.domain;
 const PRIVATE_RELAY_SUB_DOMAIN = `privaterelay.${EMAIL_DOMAIN}`;
 const PRIVATE_RELAY_FROM_SUFFIX = `@${PRIVATE_RELAY_SUB_DOMAIN}`;
 
