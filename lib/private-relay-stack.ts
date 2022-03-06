@@ -12,6 +12,7 @@ import * as event from 'aws-cdk-lib/aws-lambda-event-sources';
 import { BlockPublicAccess, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import config from './config';
+import emailPrefixes from './email-prefixes';
 
 const FWD_TO_EMAIL = config.email;
 const EMAIL_DOMAIN = config.domain;
@@ -83,7 +84,7 @@ export default class PrivateRelayStack extends Stack {
 
     const ruleSet = new ses.ReceiptRuleSet(this, 'RuleSet');
     ruleSet.addRule('Fwd', {
-      recipients: [`check-mate@${EMAIL_DOMAIN}`, `test-potato@${EMAIL_DOMAIN}`],
+      recipients: emailPrefixes.map(e => `${e}@${EMAIL_DOMAIN}`),
       actions: [
         // Store in S3 with SNS if large emails expected
         new actions.S3({
